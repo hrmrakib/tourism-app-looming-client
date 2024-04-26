@@ -1,50 +1,97 @@
-import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useForm } from "react-hook-form";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Contexts/AuthContextProvider";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const RegisterPage = () => {
+  const { createUser, setUser } = useContext(AuthContext);
+  const [passwordError, setPasswordError] = useState("");
+  const [anyError, setAnyError] = useState("");
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const { displayName, password, email, photoURL } = data;
+
+    if (!/[A-Z]/.test(password)) {
+      setPasswordError("");
+      setPasswordError("Password must have at least one uppercase letter");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      setPasswordError("");
+      setPasswordError("Password must have at least one lowercase letter");
+      return;
+    } else if (password.length < 6) {
+      setPasswordError("");
+      setPasswordError("Password length must be at least 6 characters");
+      return;
+    } else {
+      setPasswordError("");
+      setAnyError("");
+
+      createUser(email, password)
+        .then((result) => {
+          updateProfile(result.user, {
+            displayName: displayName,
+            photoURL: photoURL,
+          }).then(() => {
+            setUser({
+              displayName: displayName,
+              photoURL: photoURL,
+              email: email,
+            });
+          });
+
+          // goTo(location?.state ? location.state : "/");
+        })
+        .catch((err) => {
+          notify(err.message);
+          setAnyError(err.message);
+        });
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "Registration successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      // notify("Register successfully!");
+    }
+  };
+  const handleGoogleSignIn = () => {};
+  const handleGithubSignIn = () => {};
+
+  const signIn = true;
+
+  const notify = (text) => toast(text);
+
   return (
-    <div className='gadgetContainer'>
-      {/* {loading && <Spinner />} */}
-      <div className='flex md:justify-between items-center justify-center flex-wrap gap-4'>
-        <img className='h-[100px]' src={logo} alt='' />
+    <div className='w-[86%] mx-auto'>
+      <ToastContainer autoClose={3500} />
+      <div>
+        <h2>Loomgin</h2>
         <div>
-          Not a member?
-          <Link
-            className='px-3 ml-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'
-            to='/signUp'
-          >
-            Sign Up
-          </Link>
+          <p>Already a User</p>
+          <Link to='/login'>Login</Link>
         </div>
       </div>
-
-      <p
-        onClick={() => navigate("/")}
-        className='text-lg font-semibold text-[#FF497C] my-3 cursor-pointer hover:bg-[#FF497C] inline-block rounded py-1 px-2 hover:text-white duration-200'
-      >
-        <i className='bx bx-left-arrow-alt'></i> <span>Back Home</span>
-      </p>
-
-      <div className='border shadow-lg mt-10'>
-        <div className='w-full  flex'>
-          <div
-            className='w-full  bg-gray-400 hidden lg:block  bg-no-repeat  lg:w-1/2  rounded-l-lg '
-            style={{
-              background: `url(${signIn})`,
-              backgroundSize: "100% 100%",
-              backgroundOrigin: "content-box",
-            }}
-          >
-            <p className='font-bold text-3xl mt-20 mx-6'>
-              We Offer the <br />
-              Best Products
-            </p>
-          </div>
-
-          <div className='w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none'>
-            <div className=' p-5 '>
+      <div className='w-1/2  mx-auto border shadow-lg my-8'>
+        <div>
+          <div className='bg-white p-5 rounded-lg lg:rounded-l-none'>
+            <div className='p-5'>
               <div className='pb-8'>
                 <p className='text-3xl font-bold mb-2'>
-                  Sign in to GigaGadgets.
+                  I'm New Here in Looming.
                 </p>
 
                 <p className='font-semibold text-black/60'>
@@ -96,26 +143,53 @@ const RegisterPage = () => {
                 </button>
               </div>
 
-              <div className='my-5 border-b text-center'>
-                <div className='leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium  transform translate-y-3/4'>
-                  Or sign In with e-mail
-                </div>
+              <div className='flex gap-9 relative my-5'>
+                <p className='border-b border-gray-300 w-full'></p>
+                <span className='absolute left-1/2 -ml-2 -mt-3'>Or</span>
+                <p className='border-b border-gray-300 w-full'></p>
               </div>
 
-              <form onSubmit={handleLogin} className='space-y-3 w-full '>
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className='space-y-3 w-full '
+              >
+                <p className='flex justify-end'>
+                  Already a User to Looming? Please
+                  <Link
+                    to='/login'
+                    className='text-lg font-semibold text-blue-600 ml-1 hover:underline'
+                  >
+                    Login
+                  </Link>
+                </p>
+
                 <div>
                   <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
-                    <legend className=' font-medium text-black/60'>
-                      Email
-                    </legend>
+                    <legend className=' font-medium text-black/60'>Name</legend>
                     <input
-                      type='email'
-                      name='email'
-                      id=''
-                      placeholder='Email'
+                      type='text'
+                      {...register("displayName", { required: true })}
+                      placeholder='Your Name'
                       className='px-4 py-1 w-full focus:outline-0'
                     />
                   </fieldset>
+                  {errors.displayName && (
+                    <span className='text-red-600'>Name is required</span>
+                  )}
+                </div>
+                <div>
+                  <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
+                    <legend className='font-medium text-black/60'>Email</legend>
+                    <input
+                      type='email'
+                      {...register("email", { required: true })}
+                      placeholder='Enter password'
+                      className='px-4 py-1 w-full focus:outline-0'
+                    />
+                  </fieldset>
+                  {errors.email && (
+                    <span className='text-red-600'>Email is required</span>
+                  )}
                 </div>
                 <div>
                   <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
@@ -124,27 +198,41 @@ const RegisterPage = () => {
                     </legend>
                     <input
                       type='password'
-                      name='password'
-                      id=''
+                      {...register("password", { required: true })}
                       placeholder='password'
                       className='px-4 py-1 w-full focus:outline-0'
                     />
                   </fieldset>
+                  {passwordError}
+                  {errors.password && (
+                    <span className='text-red-600'>Password is required</span>
+                  )}
+                </div>
+                <div>
+                  <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
+                    <legend className=' font-medium text-black/60'>
+                      PhotoURL
+                    </legend>
+                    <input
+                      type='text'
+                      {...register("photoURL", { required: true })}
+                      placeholder='Enter PhotoURL'
+                      className='px-4 py-1 w-full focus:outline-0'
+                    />
+                  </fieldset>
+                  {errors.photoURL && (
+                    <span className='text-red-600'>PhotoURL is required</span>
+                  )}
                 </div>
 
-                <button className='px-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
-                  Sign In
+                <button className='w-full mt-3 px-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
+                  Sign Up
                 </button>
               </form>
             </div>
           </div>
         </div>
       </div>
-      <Toaster
-        toastOptions={{
-          duration: 3000,
-        }}
-      />
     </div>
   );
 };

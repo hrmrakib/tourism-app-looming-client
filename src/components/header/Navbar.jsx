@@ -3,10 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 // import { AuthContext } from "../context/AuthContext";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-
-const user = 0;
+import { AuthContext } from "../../Contexts/AuthContextProvider";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+
   const navLinks = (
     <>
       <li>
