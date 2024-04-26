@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import Navbar from "../components/header/Navbar";
 
 const ErrorPage = () => {
   useEffect(() => {
@@ -9,7 +8,6 @@ const ErrorPage = () => {
 
   return (
     <>
-      <Navbar />
       <div className='h-screen flex flex-col justify-center items-center'>
         <div className='flex flex-col justify-center items-center'>
           <h2 className='text-orange-500 text-8xl font-extrabold'>

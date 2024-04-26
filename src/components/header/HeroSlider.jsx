@@ -5,9 +5,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import slider1 from "/assets/slider1.jpg";
-import slider3 from "/assets/slider2.jpg";
-import slider2 from "/assets/slider3.jpg";
+const slider1 = "https://i.ibb.co/68K7k3L/slider1.jpg";
+const slider2 = "https://i.ibb.co/Sd0zc64/slider2.jpg";
+const slider3 = "https://i.ibb.co/vY6R9mb/slider3.jpg";
+
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
