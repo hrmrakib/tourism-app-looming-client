@@ -3,8 +3,21 @@ import tour from "/assets/tour.jpg";
 import { FaRegHeart } from "react-icons/fa";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { FaRegClock } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { baseURL } from "../../utilities/url";
+import { Link } from "react-router-dom";
 
 const TouristSpot = () => {
+  const [sixTouristSpot, setSixTouristSpot] = useState([]);
+
+  useEffect(() => {
+    fetch(`${baseURL}/allspot`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSixTouristSpot(data);
+      });
+  }, []);
+
   return (
     <div className='my-24'>
       <div className='flex flex-col items-center'>
@@ -16,43 +29,55 @@ const TouristSpot = () => {
         </h2>
       </div>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-16'>
-        <div>
-          <div className='relative shadow-lg z-0'>
-            <img className='rounded-xl' src={tour} alt='' />
-            <FaRegHeart className='absolute top-3 right-3 text-3xl bg-gray-700 text-white p-2 rounded-lg opacity-75' />
-          </div>
-
-          <div className='relative bg-gray-900 text-gray-950 dark:text-white shadow-xl px-5 py-4 rounded-lg -mt-12 z-10'>
-            <h2 className='text-xl font-bold mb-3 text-gray-950 dark:text-white'>
-              Discovery Island Kayak Tour
-            </h2>
-            <div className='flex items-center gap-2 mb-3'>
-              <FaLocationDot className='text-green-500' />
-              <p>Main Street, Brooklyn, NY</p>
-            </div>
-            <div className='flex items-center gap-2 pb-3 border-b-2'>
-              <RiMoneyDollarCircleFill className='text-green-500' />
-              <p>
-                From{" "}
-                <span className='text-orange-500 font-semibold'>$2100</span>
-              </p>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 my-16'>
+        {sixTouristSpot.slice(0, 6).map((spot) => (
+          <div key={spot._id}>
+            <div className='relative shadow-lg z-0'>
+              <img
+                className='w-full h-64 rounded-xl'
+                src={spot.photoURL}
+                alt=''
+              />
+              <FaRegHeart className='absolute top-3 right-3 text-3xl bg-gray-700 text-white p-2 rounded-lg opacity-75' />
             </div>
 
-            <div className='flex justify-between items-center mt-4'>
-              <div>
-                <p className='flex items-center gap-2'>
-                  <FaRegClock /> <span>3 days</span>
+            <div className='relative bg-white dark:bg-gray-900 text-gray-950 dark:text-white shadow-xl px-5 py-4 rounded-lg -mt-12 z-10'>
+              <h2 className='text-xl font-bold mb-3 text-gray-950 dark:text-white'>
+                {spot.spotName}
+              </h2>
+              <div className='flex items-center gap-2 mb-3'>
+                <FaLocationDot className='text-green-500' />
+                <p>
+                  {spot.location}, {spot.country}
                 </p>
               </div>
-              <div>
-                <button className='w-full mt-3 px-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
-                  View Details
-                </button>
+              <div className='flex items-center gap-2 pb-3 border-b-2'>
+                <RiMoneyDollarCircleFill className='text-green-500' />
+                <p>
+                  From{" "}
+                  <span className='text-orange-500 font-semibold'>
+                    ${spot.averageCost}
+                  </span>
+                </p>
+              </div>
+
+              <div className='flex justify-between items-center mt-4'>
+                <div>
+                  <p className='flex items-center gap-2'>
+                    <FaRegClock /> <span>{spot.travelTime}</span>
+                  </p>
+                </div>
+                <div>
+                  <Link to={`${spot._id}`}>
+                    <button className='w-full mt-3 px-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
+                      View Details
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );

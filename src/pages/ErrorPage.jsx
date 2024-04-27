@@ -8,13 +8,15 @@ const ErrorPage = () => {
 
   return (
     <>
-      <div className='h-screen flex flex-col justify-center items-center'>
+      <div className='h-screen flex flex-col justify-center items-center bg-white'>
         <div className='flex flex-col justify-center items-center'>
           <h2 className='text-orange-500 text-8xl font-extrabold'>
             4<span className='text-red-500'>0</span>4
           </h2>
-          <h3 className='text-3xl font-semibold my-4'>OPPS! PAGE NOT FOUND!</h3>
-          <p className='mb-4 max-w-96'>
+          <h3 className='text-3xl font-semibold my-4 text-gray-900'>
+            OPPS! PAGE NOT FOUND!
+          </h3>
+          <p className='mb-4 max-w-96 text-gray-700'>
             Sorry, the page you are looking for does not exists. If you think
             something is broken, report a problem.
           </p>

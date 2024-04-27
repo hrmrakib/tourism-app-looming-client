@@ -15,8 +15,10 @@ const ChooseUs = () => {
           <div className='flex gap-2'>
             <MdOutlineSecurity className='text-5xl text-green-400' />
             <div>
-              <h2 className='text-2xl font-bold mb-2'>Best security</h2>
-              <p className='text-gray-500'>
+              <h2 className='text-2xl font-bold mb-2 text-gray-600 dark:text-gray-200'>
+                Best security
+              </h2>
+              <p className='text-gray-700 dark:text-gray-200'>
                 We denounce with righteous indignation and dislike.
               </p>
             </div>
@@ -24,8 +26,10 @@ const ChooseUs = () => {
           <div className='flex gap-2'>
             <FaWifi className='text-5xl text-green-400' />
             <div>
-              <h2 className='text-2xl font-bold mb-2'>Free Internet</h2>
-              <p className='text-gray-500'>
+              <h2 className='text-2xl font-bold mb-2 text-gray-600 dark:text-gray-200'>
+                Free Internet
+              </h2>
+              <p className='text-gray-700 dark:text-gray-200'>
                 We denounce with righteous indignation and dislike.
               </p>
             </div>
@@ -34,8 +38,10 @@ const ChooseUs = () => {
           <div className='flex gap-2'>
             <MdSolarPower className='text-5xl text-green-400' />
             <div>
-              <h2 className='text-2xl font-bold mb-2'>Solar energy</h2>
-              <p className='text-gray-500'>
+              <h2 className='text-2xl font-bold mb-2 text-gray-600 dark:text-gray-200'>
+                Solar energy
+              </h2>
+              <p className='text-gray-700 dark:text-gray-200'>
                 We denounce with righteous indignation and dislike.
               </p>
             </div>
@@ -43,8 +49,10 @@ const ChooseUs = () => {
           <div className='flex gap-2'>
             <FaBiking className='text-5xl text-green-400' />
             <div>
-              <h2 className='text-2xl font-bold mb-2'>Mountain biking</h2>
-              <p className='text-gray-500'>
+              <h2 className='text-2xl font-bold mb-2 text-gray-600 dark:text-gray-200'>
+                Mountain biking
+              </h2>
+              <p className='text-gray-700 dark:text-gray-200'>
                 We denounce with righteous indignation and dislike.
               </p>
             </div>

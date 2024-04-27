@@ -47,7 +47,7 @@ const Review = () => {
                 <FaStar />
                 <FaStar />
               </div>
-              <p className='lg:border-b-2 pb-5 mt-5'>
+              <p className='lg:border-b-2 pb-5 mt-5 text-gray-600 dark:text-gray-200'>
                 To take trivial example which of ever undertakes laborious
                 physical exercise, except to obtain some advantage from but who
                 has any right to find fault with man who chooses to enjoy.
@@ -55,8 +55,12 @@ const Review = () => {
               <div className='flex items-center gap-3 mt-8'>
                 <img className='size-16 rounded-full ' src={img1} alt='' />
                 <div>
-                  <h2 className='text-2xl font-bold'>Kahlito Volp</h2>
-                  <p>Marketing Officer</p>
+                  <h2 className='text-2xl font-bold text-gray-950 dark:text-white'>
+                    Kahlito Volp
+                  </h2>
+                  <p className='text-gray-700 dark:text-gray-200'>
+                    Marketing Officer
+                  </p>
                 </div>
               </div>
             </div>
@@ -73,7 +77,7 @@ const Review = () => {
                 <FaStar />
                 <FaStar />
               </div>
-              <p className='lg:border-b-2 pb-5 mt-5'>
+              <p className='lg:border-b-2 pb-5 mt-5 text-gray-600 dark:text-gray-200'>
                 To take trivial example which of ever undertakes laborious
                 physical exercise, except to obtain some advantage from but who
                 has any right to find fault with man who chooses to enjoy.
@@ -81,8 +85,12 @@ const Review = () => {
               <div className='flex items-center gap-3 mt-8'>
                 <img className='size-16 rounded-full ' src={img2} alt='' />
                 <div>
-                  <h2 className='text-2xl font-bold'>Faiul Simon</h2>
-                  <p>Operating Officer</p>
+                  <h2 className='text-2xl font-bold text-gray-950 dark:text-white'>
+                    Faiul Simon
+                  </h2>
+                  <p className='text-gray-700 dark:text-gray-200'>
+                    Operating Officer
+                  </p>
                 </div>
               </div>
             </div>
@@ -99,7 +107,7 @@ const Review = () => {
                 <FaStar />
                 <FaStar />
               </div>
-              <p className='lg:border-b-2 pb-5 mt-5'>
+              <p className='lg:border-b-2 pb-5 mt-5 text-gray-600 dark:text-gray-200'>
                 To take trivial example which of ever undertakes laborious
                 physical exercise, except to obtain some advantage from but who
                 has any right to find fault with man who chooses to enjoy.
@@ -107,8 +115,12 @@ const Review = () => {
               <div className='flex items-center gap-3 mt-8'>
                 <img className='size-16 rounded-full ' src={img3} alt='' />
                 <div>
-                  <h2 className='text-2xl font-bold'>Rehel Qazi</h2>
-                  <p>Software Engineer</p>
+                  <h2 className='text-2xl font-bold text-gray-950 dark:text-white'>
+                    Rehel Qazi
+                  </h2>
+                  <p className='text-gray-700 dark:text-gray-200'>
+                    Software Engineer
+                  </p>
                 </div>
               </div>
             </div>

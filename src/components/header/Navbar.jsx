@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import darkimg from "/assets/dark.png";
 import lightimg from "/assets/light.png";
 import { Tooltip } from "react-tooltip";
@@ -8,12 +8,14 @@ import { AuthContext } from "../../Contexts/AuthContextProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-
   const [darkMode, setDarkMode] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    applyTheme();
-  }, [darkMode]);
+    if (location.pathname === "/") {
+      applyTheme();
+    }
+  }, [darkMode, location]);
 
   function applyTheme() {
     if (darkMode) {
@@ -30,7 +32,9 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to='/'>Home</NavLink>
+        <NavLink to='/' className='text-gray-950 dark:text-white'>
+          Home
+        </NavLink>
       </li>
       <li>
         <NavLink to='/all-tourists-spot'>All Tourists Spot </NavLink>
