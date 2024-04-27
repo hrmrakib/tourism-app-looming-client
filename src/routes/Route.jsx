@@ -6,6 +6,9 @@ import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/Login";
 import AddTouristSpot from "../pages/AddTouristSpot";
 import PrivateRoute from "./PrivateRoute";
+import DetailViewTouristSpot from "../components/tourist/DetailViewTouristSpot";
+import { baseURL } from "../utilities/url";
+import AllTouristSpot from "../pages/AllTouristSpot";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,19 @@ const router = createBrowserRouter([
             <AddTouristSpot />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/allTouristSpot",
+        element: <AllTouristSpot />,
+      },
+      {
+        path: "/tourspot-detail/:id",
+        element: (
+          <PrivateRoute>
+            <DetailViewTouristSpot />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`${baseURL}/allspot/${params.id}`),
       },
     ],
   },

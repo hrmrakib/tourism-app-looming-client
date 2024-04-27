@@ -1,5 +1,4 @@
 import { FaLocationDot } from "react-icons/fa6";
-import tour from "/assets/tour.jpg";
 import { FaRegHeart } from "react-icons/fa";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { FaRegClock } from "react-icons/fa";
@@ -68,7 +67,7 @@ const TouristSpot = () => {
                   </p>
                 </div>
                 <div>
-                  <Link to={`${spot._id}`}>
+                  <Link to={`/tourspot-detail/${spot._id}`}>
                     <button className='w-full mt-3 px-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
                       View Details
                     </button>
