@@ -19,7 +19,7 @@ const img3 =
 
 const Review = () => {
   return (
-    <div className='my-24 grid grid-cols-1 lg:grid-cols-2 gap-10'>
+    <div className='py-24 bg-white dark:bg-gray-900 grid grid-cols-1 lg:grid-cols-2 gap-10'>
       <div>
         <img className='h-52 md:h-96' src={img} alt='' />
       </div>
@@ -37,7 +37,7 @@ const Review = () => {
         >
           <SwiperSlide>
             <div>
-              <h2 className='text-3xl md:text-4xl font-bold mb-3'>
+              <h2 className='text-3xl text-gray-950 dark:text-white md:text-4xl font-bold mb-3'>
                 Quality Service
               </h2>
               <div className='flex items-center gap-2 *:text-orange-500'>
@@ -61,9 +61,11 @@ const Review = () => {
               </div>
             </div>
           </SwiperSlide>
-          {/* <SwiperSlide>
+          <SwiperSlide>
             <div>
-              <h2 className='text-4xl font-bold mb-3'>Quality Service</h2>
+              <h2 className='text-3xl text-gray-950 dark:text-white md:text-4xl font-bold mb-3'>
+                Quality Service
+              </h2>
               <div className='flex items-center gap-2 *:text-orange-500'>
                 <FaStar />
                 <FaStar />
@@ -71,7 +73,7 @@ const Review = () => {
                 <FaStar />
                 <FaStar />
               </div>
-              <p className='py-5 border-b-2'>
+              <p className='lg:border-b-2 pb-5 mt-5'>
                 To take trivial example which of ever undertakes laborious
                 physical exercise, except to obtain some advantage from but who
                 has any right to find fault with man who chooses to enjoy.
@@ -79,15 +81,17 @@ const Review = () => {
               <div className='flex items-center gap-3 mt-8'>
                 <img className='size-16 rounded-full ' src={img2} alt='' />
                 <div>
-                  <h2 className='text-2xl font-bold'>Matos Kheo</h2>
-                  <p>Dangerous Officer</p>
+                  <h2 className='text-2xl font-bold'>Faiul Simon</h2>
+                  <p>Operating Officer</p>
                 </div>
               </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div>
-              <h2 className='text-4xl font-bold mb-3'>Quality Service</h2>
+              <h2 className='text-3xl text-gray-950 dark:text-white md:text-4xl font-bold mb-3'>
+                Quality Service
+              </h2>
               <div className='flex items-center gap-2 *:text-orange-500'>
                 <FaStar />
                 <FaStar />
@@ -95,7 +99,7 @@ const Review = () => {
                 <FaStar />
                 <FaStar />
               </div>
-              <p className='py-5 border-b-2'>
+              <p className='lg:border-b-2 pb-5 mt-5'>
                 To take trivial example which of ever undertakes laborious
                 physical exercise, except to obtain some advantage from but who
                 has any right to find fault with man who chooses to enjoy.
@@ -103,12 +107,12 @@ const Review = () => {
               <div className='flex items-center gap-3 mt-8'>
                 <img className='size-16 rounded-full ' src={img3} alt='' />
                 <div>
-                  <h2 className='text-2xl font-bold'>Khalid Anam</h2>
-                  <p>Chief Officer</p>
+                  <h2 className='text-2xl font-bold'>Rehel Qazi</h2>
+                  <p>Software Engineer</p>
                 </div>
               </div>
             </div>
-          </SwiperSlide> */}
+          </SwiperSlide>
         </Swiper>
       </div>
     </div>

@@ -2,14 +2,16 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className='pt-20 dark:bg-[#0F172A]'>
+    <div className='pt-20 bg-white dark:bg-[#0F172A]'>
       <div>
         <footer className='bg-white dark:bg-gray-900 w-[88%] mx-auto'>
           <div className='mx-auto w-full  p-4 py-6 lg:py-8'>
             <div className='md:flex justify-between'>
               <div className='mb-6 md:mb-0'>
                 <Link to='/' className='flex items-center'>
-                  <h2 className='text-4xl text-white'>Looming</h2>
+                  <h2 className='text-4xl text-gray-900 dark:text-white'>
+                    Looming
+                  </h2>
                 </Link>
                 <p className='max-w-md text-white my-5'>
                   To take trivial example which us ever undertakes laborious

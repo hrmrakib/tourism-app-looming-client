@@ -8,7 +8,7 @@ const ChooseUs = () => {
   return (
     <div className='my-28 grid md:grid-cols-2 gap-16 items-center'>
       <div>
-        <h2 className='text-3xl lg:text-5xl font-bold mb-8'>
+        <h2 className='text-3xl lg:text-5xl font-bold mb-8 text-gray-950 dark:text-white'>
           People why choose our travel adventure
         </h2>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>

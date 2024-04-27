@@ -1,18 +1,19 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthContextProvider";
 
 const LoginPage = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
   const [passwordError, setPasswordError] = useState("");
+  const [authError, setAuthError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -20,19 +21,40 @@ const LoginPage = () => {
     const { email, password } = data;
 
     setPasswordError("");
+    setAuthError("");
     if (password.lenght < 6) {
       setPasswordError("Must be 6 characters");
     }
     signIn(email, password)
-      .then((user) => {
-        console.log("login", user);
+      .then(() => {
+        navigate(location.state ? location?.state : "/");
       })
       .catch((err) => {
-        console.log(err.message);
+        setAuthError(err.message);
       });
   };
-  const handleGoogleSignIn = () => {};
-  const handleGithubSignIn = () => {};
+
+  const handleGoogleSignIn = () => {
+    setAuthError("");
+    googleSignIn()
+      .then(() => {
+        navigate(location.state ? location?.state : "/");
+      })
+      .catch((err) => {
+        setAuthError(err);
+      });
+  };
+
+  const handleGithubSignIn = () => {
+    setAuthError("");
+    githubSignIn()
+      .then(() => {
+        navigate(location.state ? location?.state : "/");
+      })
+      .catch((err) => {
+        setAuthError(err);
+      });
+  };
 
   return (
     <div className='w-[86%] mx-auto'>
@@ -121,6 +143,11 @@ const LoginPage = () => {
                       className='px-4 py-1 w-full focus:outline-0'
                     />
                   </fieldset>
+                  <p>
+                    {errors.email && (
+                      <span className='text-red-600'>Email is required</span>
+                    )}
+                  </p>
                 </div>
                 <div>
                   <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
@@ -134,8 +161,13 @@ const LoginPage = () => {
                       className='px-4 py-1 w-full focus:outline-0'
                     />
                   </fieldset>
+                  <p>
+                    {errors.password && (
+                      <span className='text-red-600'>Password is required</span>
+                    )}
+                  </p>
                 </div>
-
+                <p className='text-lg text-red-400'>{authError}</p>
                 <button className='w-full mt-3 px-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
                   Sign Up
                 </button>

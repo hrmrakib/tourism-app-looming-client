@@ -4,6 +4,8 @@ import HomePage from "../pages/HomePage";
 import Root from "../layouts/Root";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/Login";
+import AddTouristSpot from "../pages/AddTouristSpot";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -15,15 +17,23 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
       },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
+      },
+      {
+        path: "/add",
+        element: (
+          <PrivateRoute>
+            <AddTouristSpot />
+          </PrivateRoute>
+        ),
+      },
     ],
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/register",
-    element: <RegisterPage />,
   },
 ]);
 

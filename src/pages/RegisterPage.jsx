@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
@@ -8,10 +8,12 @@ import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 
 const RegisterPage = () => {
-  const { createUser, setUser } = useContext(AuthContext);
+  const { createUser, setUser, googleSignIn, githubSignIn } =
+    useContext(AuthContext);
   const [passwordError, setPasswordError] = useState("");
   const [anyError, setAnyError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     register,
@@ -51,7 +53,7 @@ const RegisterPage = () => {
             });
           });
 
-          // goTo(location?.state ? location.state : "/");
+          navigate(location.state ? location?.state : "/");
         })
         .catch((err) => {
           notify(err.message);
@@ -64,26 +66,36 @@ const RegisterPage = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      // notify("Register successfully!");
     }
   };
-  const handleGoogleSignIn = () => {};
-  const handleGithubSignIn = () => {};
+  const handleGoogleSignIn = () => {
+    setAnyError("");
+    googleSignIn()
+      .then(() => {
+        navigate(location.state ? location?.state : "/");
+      })
+      .catch((err) => {
+        setAnyError(err);
+      });
+  };
 
-  const signIn = true;
+  const handleGithubSignIn = () => {
+    setAnyError("");
+    githubSignIn()
+      .then(() => {
+        navigate(location.state ? location?.state : "/");
+      })
+      .catch((err) => {
+        setAnyError(err);
+      });
+  };
 
   const notify = (text) => toast(text);
 
   return (
     <div className='w-[86%] mx-auto'>
       <ToastContainer autoClose={3500} />
-      <div>
-        <h2>Loomgin</h2>
-        <div>
-          <p>Already a User</p>
-          <Link to='/login'>Login</Link>
-        </div>
-      </div>
+
       <div className='w-1/2  mx-auto border shadow-lg my-8'>
         <div>
           <div className='bg-white p-5 rounded-lg lg:rounded-l-none'>
@@ -223,6 +235,7 @@ const RegisterPage = () => {
                     <span className='text-red-600'>PhotoURL is required</span>
                   )}
                 </div>
+                <p className='text-red-600'>{anyError}</p>
 
                 <button className='w-full mt-3 px-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
                   Sign Up

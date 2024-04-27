@@ -1,12 +1,31 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-// import { AuthContext } from "../context/AuthContext";
+import darkimg from "/assets/dark.png";
+import lightimg from "/assets/light.png";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { AuthContext } from "../../Contexts/AuthContextProvider";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    applyTheme();
+  }, [darkMode]);
+
+  function applyTheme() {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
 
   const navLinks = (
     <>
@@ -17,7 +36,7 @@ const Navbar = () => {
         <NavLink to='/all-tourists-spot'>All Tourists Spot </NavLink>
       </li>
       <li>
-        <NavLink to='/add-tourists-spot'>Add Tourists Spot</NavLink>
+        <NavLink to='/add'>Add Tourists Spot</NavLink>
       </li>
       <li>
         <NavLink to='/my-list'>My List</NavLink>
@@ -25,12 +44,14 @@ const Navbar = () => {
     </>
   );
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    logOut();
+  };
   return (
-    <nav className='mb-4 py-1 md:w-[88%] mx-auto'>
+    <nav className='pb-4 py-1 md:w-[88%] mx-auto bg-white dark:bg-gray-900'>
       <Tooltip id='my-tooltip' />
 
-      <div className='navbar bg-base-100'>
+      <div className='navbar bg-white dark:bg-gray-900'>
         <div className='navbar-start'>
           <div className='dropdown'>
             <div tabIndex={0} role='button' className='btn btn-ghost lg:hidden'>
@@ -51,32 +72,59 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52 *:text-lg'
+              className='menu menu-sm dropdown-content mt-3 z-50 p-2 shadow text-gray-950 dark:text-white rounded-box w-52 *:text-lg'
             >
               {navLinks}
             </ul>
           </div>
 
-          <Link to='/' className='md:text-2xl font-bold'>
+          <Link
+            to='/'
+            className='md:text-2xl font-bold text-gray-950 dark:text-white'
+          >
             Looming
           </Link>
         </div>
         <div className='navbar-center hidden lg:flex'>
-          <ul className='menu menu-horizontal px-1 *:text-lg'>{navLinks}</ul>
+          <ul className='menu menu-horizontal px-1 *:text-lg text-gray-950 dark:text-white'>
+            {navLinks}
+          </ul>
         </div>
         <div className='navbar-end'>
+          <div className='mr-8 form-control'>
+            <label className='cursor-pointer label'>
+              <input
+                type='checkbox'
+                className='toggle-checkbox checkbox checkbox-secondary'
+                id='toggle'
+                checked={darkMode}
+                onChange={toggleDarkMode}
+              />
+              <label htmlFor='toggle' className='toggle-label'>
+                <span className='toggle-inner'></span>
+                <span className='toggle-switch'></span>
+              </label>
+              <span className='toggle-text ml-1'>
+                <img
+                  className='size-10'
+                  src={darkMode ? lightimg : darkimg}
+                  alt=''
+                />
+              </span>
+            </label>
+          </div>
           {user ? (
             <>
-              <Link to='/update-profile'>
-                <img
-                  className='size-12 rounded-full mr-3'
-                  data-tooltip-id='my-tooltip'
-                  data-tooltip-content={user.displayName}
-                  data-tooltip-place='left'
-                  src={user.photoURL}
-                  alt='user'
-                />
-              </Link>
+              {/* <Link to='/update-profile'> */}
+              <img
+                className='size-12 rounded-full mr-3 cursor-pointer'
+                data-tooltip-id='my-tooltip'
+                data-tooltip-content={user.displayName}
+                data-tooltip-place='left'
+                src={user.photoURL}
+                alt='user'
+              />
+              {/* </Link> */}
               <button
                 className='btn btn-outline btn-warning'
                 onClick={handleLogout}

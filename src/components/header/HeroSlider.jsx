@@ -40,7 +40,7 @@ export default function HeroSlider() {
               </button>
             </div>
           </div>
-          <img className='w-full h-[300px] lg:h-[600px]' src={slider1} alt='' />
+          <img className='w-full h-[300px] lg:h-[610px]' src={slider1} alt='' />
         </SwiperSlide>
         <SwiperSlide className='relative'>
           <div className='absolute border w-full h-full flex items-end justify-end p-5'>
@@ -56,7 +56,7 @@ export default function HeroSlider() {
               </button>
             </div>
           </div>
-          <img className='w-full h-[300px] lg:h-[600px]' src={slider2} alt='' />
+          <img className='w-full h-[300px] lg:h-[610px]' src={slider2} alt='' />
         </SwiperSlide>
         <SwiperSlide className='relative'>
           <div className='absolute border w-full h-full flex items-end justify-end p-5'>
@@ -72,7 +72,7 @@ export default function HeroSlider() {
               </button>
             </div>
           </div>
-          <img className='w-full h-[300px] lg:h-[600px]' src={slider3} alt='' />
+          <img className='w-full h-[300px] lg:h-[610px]' src={slider3} alt='' />
         </SwiperSlide>
       </Swiper>
     </>
