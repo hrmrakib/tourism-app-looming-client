@@ -34,7 +34,7 @@ const MyListPage = () => {
   }
 
   return (
-    <div className='bg-white'>
+    <div className='bg-white min-h-screen'>
       <div className='w-[80%] mx-auto'>
         <div className='mb-12'>
           <div>
@@ -43,71 +43,64 @@ const MyListPage = () => {
             </h2>
           </div>
         </div>
-        <div className='grid lg:grid-cols-2 gap-14'>
-          {listedSpot.map((spot) => (
-            <div key={spot._id}>
-              <div className='relative shadow-lg z-0'>
-                <img
-                  className='w-full h-64 rounded-xl'
-                  src={spot.photoURL}
-                  alt=''
-                />
-                <FaRegHeart className='absolute top-3 right-3 text-3xl bg-gray-700 text-white p-2 rounded-lg opacity-75' />
-              </div>
-
-              <div className='relative bg-white dark:bg-gray-900 text-gray-950 dark:text-white shadow-xl px-5 py-4 rounded-lg -mt-12 z-10'>
-                <div className='flex items-center justify-between border-b-2 mb-2'>
-                  <div>
-                    <h2 className='text-xl font-bold mb-3 text-gray-950 dark:text-white'>
-                      {spot.spotName}
-                    </h2>
-                    <div className='flex items-center gap-2 mb-3'>
-                      <FaLocationDot className='text-green-500' />
-                      <p>
-                        {spot.location}, {spot.country}
-                      </p>
-                    </div>
-
-                    <div className='flex items-center gap-2 pb-3'>
-                      <RiMoneyDollarCircleFill className='text-green-500' />
-                      <p>
-                        From{" "}
-                        <span className='text-orange-500 font-semibold'>
-                          ${spot.averageCost}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className='flex items-center gap-3'>
-                    <TiWeatherPartlySunny className='text-2xl' />
-                    <p className='flex flex-col'>
-                      <span className='text-sm text-gray-800'>Season</span>
-                      <span className='font-semibold text-gray-950'>
-                        {spot?.seasonality}
-                      </span>
-                    </p>
-                  </div>
-                </div>
-
-                <p className='text-gray-700 min-h-14'>{spot.description}</p>
-
-                <div className='flex justify-between items-center mt-4'>
-                  <div>
-                    <p className='flex items-center gap-2'>
-                      <FaRegClock /> <span>{spot.travelTime}</span>
-                    </p>
-                  </div>
-                  <div>
-                    <Link to={`/tourspot-detail/${spot._id}`}>
-                      <button className='w-full mt-3 px-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
-                        View Details
+        <div>
+          <div className='overflow-x-auto'>
+            <table className='table'>
+              {/* head */}
+              <thead>
+                <tr className='text-gray-900 font-semibold text-xl'>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Duration</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* row 1 */}
+                {listedSpot.map((spot, i) => (
+                  <tr key={spot?._id}>
+                    <th className='text-green-400 font-semibold text-xl'>
+                      {i + 1}
+                    </th>
+                    <td>
+                      <div className='flex items-center gap-3'>
+                        <div className='avatar'>
+                          <div className='w-16 h-12'>
+                            <img src={spot?.photoURL} alt='' />
+                          </div>
+                        </div>
+                        <div>
+                          <div className='font-bold text-black'>
+                            {spot?.spotName}
+                          </div>
+                          <div className='text-sm text-gray-700'>
+                            {spot?.location}, {spot?.country}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td className='text-gray-800 font-semibold text-lg'>
+                      ${spot?.averageCost}
+                    </td>
+                    <td className='text-gray-800 font-semibold text-lg'>
+                      {spot?.travelTime}
+                    </td>
+                    <th>
+                      <Link to={`/updateMyList/${spot._id}`}>
+                        <button className='bg-[#f52dd0] mr-3 text-white px-4 py-2 rounded-md'>
+                          Update
+                        </button>
+                      </Link>
+                      <button className='bg-[#f64a2f] text-white px-4 py-2 rounded-md'>
+                        Delete
                       </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+                    </th>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

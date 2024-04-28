@@ -1,38 +1,23 @@
-import { useContext, useEffect, useState } from "react";
+import React from "react";
+import { useLoaderData } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { baseURL } from "../utilities/url";
 import Swal from "sweetalert2";
-import { AuthContext } from "../Contexts/AuthContextProvider";
 
-const AddTouristSpot = () => {
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const { user } = useContext(AuthContext);
-  const getUserEmail = user.email;
-  const getUserName = user.displayName;
+const UpdateMyList = () => {
+  const loadedData = useLoaderData();
+  //   console.log(loadedData);
+
+  const id = loadedData._id;
 
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm();
 
-  const watchMysel = watch("country");
-
-  useEffect(() => {
-    setSelectedCountry("");
-    const filtraPavimento = () => {
-      console.log("mysel value", watchMysel);
-      setSelectedCountry(watchMysel);
-    };
-    filtraPavimento();
-    console.log("effect calling........");
-  }, [watchMysel]);
-
-  // console.log("selectedCountry", selectedCountry);
-
-  const handleAddSpot = (data) => {
+  const handleUpdateSpot = (data) => {
     const {
       averageCost,
       country,
@@ -43,9 +28,9 @@ const AddTouristSpot = () => {
       spotName,
       totaVisitorsPerYear,
       travelTime,
-      // userEmail,
-      // userName,
     } = data;
+
+    // console.log("data", data);
 
     const spotInfo = {
       averageCost,
@@ -57,12 +42,10 @@ const AddTouristSpot = () => {
       spotName,
       totaVisitorsPerYear,
       travelTime,
-      userEmail: getUserEmail,
-      userName: getUserName,
     };
 
-    fetch(`${baseURL}/allspot`, {
-      method: "POST",
+    fetch(`${baseURL}/allspot/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -70,33 +53,31 @@ const AddTouristSpot = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
+        console.log(data);
+        if (data.modifiedCount > 0) {
           Swal.fire({
             position: "top",
             icon: "success",
-            title: "Successfully Added a Tourist Spot!",
+            title: "Successfully Updated!",
             showConfirmButton: false,
             timer: 1500,
           });
-          reset();
         }
       });
   };
 
   return (
     <div className='bg-white'>
-      <div className='w-[88%] mx-auto py-16 bg-white'>
-        <h2 className='text-4xl font-bold text-center mb-9 text-gray-950'>
-          Add a New Tourist Spot
-        </h2>
-        <form onSubmit={handleSubmit(handleAddSpot)}>
+      <div className='w-[80%] mx-auto'>
+        <form onSubmit={handleSubmit(handleUpdateSpot)}>
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10'>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
                 <legend className='font-medium text-black/60'>PhotoURL</legend>
                 <input
                   type='text'
-                  {...register("photoURL", { required: true })}
+                  defaultValue={loadedData.photoURL}
+                  {...register("photoURL")}
                   placeholder='Enter PhotoURL'
                   className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
                 />
@@ -114,7 +95,8 @@ const AddTouristSpot = () => {
                 </legend>
                 <input
                   type='text'
-                  {...register("spotName", { required: true })}
+                  defaultValue={loadedData.spotName}
+                  {...register("spotName")}
                   placeholder='Tourists Spot Name'
                   className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
                 />
@@ -132,7 +114,7 @@ const AddTouristSpot = () => {
                 </legend>
                 <select
                   className={"w-full bg-white outline-none text-black"}
-                  defaultValue='0'
+                  defaultValue={loadedData.country}
                   {...register("country")}
                 >
                   <option value='0'>Select Country</option>
@@ -155,7 +137,8 @@ const AddTouristSpot = () => {
                 <legend className='font-medium text-black/60'>Location</legend>
                 <input
                   type='text'
-                  {...register("location", { required: true })}
+                  defaultValue={loadedData.location}
+                  {...register("location")}
                   placeholder='Enter location'
                   className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
                 />
@@ -173,7 +156,8 @@ const AddTouristSpot = () => {
                 </legend>
                 <input
                   type='text'
-                  {...register("description", { required: true })}
+                  defaultValue={loadedData.description}
+                  {...register("description")}
                   placeholder='Enter description'
                   className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
                 />
@@ -191,7 +175,8 @@ const AddTouristSpot = () => {
                 </legend>
                 <input
                   type='text'
-                  {...register("averageCost", { required: true })}
+                  defaultValue={loadedData.averageCost}
+                  {...register("averageCost")}
                   placeholder='Enter cost'
                   className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
                 />
@@ -209,7 +194,8 @@ const AddTouristSpot = () => {
                 </legend>
                 <input
                   type='text'
-                  {...register("seasonality", { required: true })}
+                  defaultValue={loadedData.seasonality}
+                  {...register("seasonality")}
                   placeholder='Seasonality  - Summer / Winter'
                   className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
                 />
@@ -227,7 +213,8 @@ const AddTouristSpot = () => {
                 </legend>
                 <input
                   type='text'
-                  {...register("travelTime", { required: true })}
+                  defaultValue={loadedData.travelTime}
+                  {...register("travelTime")}
                   placeholder='Travel Time'
                   className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
                 />
@@ -245,7 +232,8 @@ const AddTouristSpot = () => {
                 </legend>
                 <input
                   type='text'
-                  {...register("totaVisitorsPerYear", { required: true })}
+                  defaultValue={loadedData.totaVisitorsPerYear}
+                  {...register("totaVisitorsPerYear")}
                   placeholder='Total Visitors Per Year'
                   className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
                 />
@@ -256,47 +244,10 @@ const AddTouristSpot = () => {
                 )}
               </p>
             </div>
-            <div className='shadow-sm'>
-              <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
-                  User Email
-                </legend>
-                <input
-                  type='email'
-                  defaultValue={getUserEmail}
-                  readOnly
-                  // {...register("userEmail", { required: true })}
-                  // placeholder='User Email'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
-                />
-              </fieldset>
-              <p>
-                {errors.userEmail && (
-                  <span className='text-red-600'>Email is required</span>
-                )}
-              </p>
-            </div>
-            <div className='shadow-sm'>
-              <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>User Name</legend>
-                <input
-                  type='text'
-                  defaultValue={getUserName}
-                  readOnly
-                  // {...register("userName", { required: true })}
-                  // placeholder='User Name'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
-                />
-              </fieldset>
-              <p>
-                {errors.userName && (
-                  <span className='text-red-600'>User name is required</span>
-                )}
-              </p>
-            </div>
+
             <div>
               <button className='w-full mt-3 px-3 py-5 text-lg bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
-                Add New Spot
+                Update Spot
               </button>
             </div>
           </div>
@@ -306,4 +257,4 @@ const AddTouristSpot = () => {
   );
 };
 
-export default AddTouristSpot;
+export default UpdateMyList;

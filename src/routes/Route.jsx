@@ -11,6 +11,7 @@ import { baseURL } from "../utilities/url";
 import AllTouristSpot from "../pages/AllTouristSpot";
 import SpecificCountry from "../pages/SpecificCountry";
 import MyListPage from "../pages/MyListPage";
+import UpdateMyList from "../pages/UpdateMyList";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,11 @@ const router = createBrowserRouter([
             <MyListPage />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/updateMyList/:id",
+        element: <UpdateMyList />,
+        loader: ({ params }) => fetch(`${baseURL}/allspot/${params.id}`),
       },
     ],
   },
