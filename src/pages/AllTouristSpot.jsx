@@ -1,3 +1,4 @@
+import { useTypewriter } from "react-simple-typewriter";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
@@ -5,6 +6,19 @@ import { FaRegClock } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { baseURL } from "../utilities/url";
 import { Link } from "react-router-dom";
+
+const MyComponent = () => {
+  const [text] = useTypewriter({
+    words: ["Life", "Moment", "Day"],
+    loop: 0,
+  });
+
+  return (
+    <div className='App'>
+      <span className='text-lg text-gray-900'>Enjoy your {text}!</span>
+    </div>
+  );
+};
 
 const AllTouristSpot = () => {
   const [allTouristSpot, setAllTouristSpot] = useState([]);
@@ -47,7 +61,10 @@ const AllTouristSpot = () => {
   return (
     <div className='bg-white py-20'>
       <div className='w-[80%] mx-auto'>
-        <div className='flex items-center justify-center'>
+        <div className='flex flex-col items-center justify-center'>
+          <div>
+            <MyComponent />
+          </div>
           <div className='dropdown dropdown-hover'>
             <div
               tabIndex={0}

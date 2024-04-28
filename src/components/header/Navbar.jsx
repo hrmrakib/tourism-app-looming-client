@@ -15,7 +15,7 @@ const Navbar = () => {
     if (location.pathname === "/") {
       applyTheme();
     }
-  }, [darkMode, location]);
+  }, [darkMode]);
 
   function applyTheme() {
     if (darkMode) {
