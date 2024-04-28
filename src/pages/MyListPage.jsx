@@ -2,10 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Contexts/AuthContextProvider";
 import { baseURL } from "../utilities/url";
 import { Link } from "react-router-dom";
-import { FaRegClock, FaRegHeart } from "react-icons/fa";
-import { TiWeatherPartlySunny } from "react-icons/ti";
-import { RiMoneyDollarCircleFill } from "react-icons/ri";
-import { FaLocationDot } from "react-icons/fa6";
+import Swal from "sweetalert2";
 
 const MyListPage = () => {
   const [listedSpot, setListedSpot] = useState([]);
@@ -22,6 +19,38 @@ const MyListPage = () => {
         setLoading(false);
       });
   }, []);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`${baseURL}/allspot/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "Deleted Successfully!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              const filtered = listedSpot.filter((spot) => spot._id !== id);
+              setListedSpot(filtered);
+            }
+          });
+      }
+    });
+  };
 
   if (loading) {
     return (
@@ -92,7 +121,10 @@ const MyListPage = () => {
                           Update
                         </button>
                       </Link>
-                      <button className='bg-[#f64a2f] text-white px-4 py-2 rounded-md'>
+                      <button
+                        onClick={() => handleDelete(spot._id)}
+                        className='bg-[#f64a2f] text-white px-4 py-2 rounded-md'
+                      >
                         Delete
                       </button>
                     </th>

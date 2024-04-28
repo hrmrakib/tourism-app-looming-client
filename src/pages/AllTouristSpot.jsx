@@ -9,12 +9,14 @@ import { Link } from "react-router-dom";
 const AllTouristSpot = () => {
   const [allTouristSpot, setAllTouristSpot] = useState([]);
   const [displayAllTouristSpot, setDisplayAllTouristSpot] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${baseURL}/allspot`)
       .then((res) => res.json())
       .then((data) => {
         setAllTouristSpot(data);
+        setLoading(false);
       });
   }, []);
 
@@ -31,6 +33,17 @@ const AllTouristSpot = () => {
     });
     setDisplayAllTouristSpot(sorted);
   };
+
+  if (loading) {
+    return (
+      <div className='bg-white flex items-center justify-center h-screen w-full'>
+        <div className='bg-gray-600 size-16 rounded-full flex items-center justify-center'>
+          <span className='loading loading-spinner loading-lg text-center text-white'></span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className='bg-white py-20'>
       <div className='w-[80%] mx-auto'>
