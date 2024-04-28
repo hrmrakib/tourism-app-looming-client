@@ -39,7 +39,7 @@ const AllTouristSpot = () => {
             <div
               tabIndex={0}
               role='button'
-              className='m-1 w-full mt-3 px-3 py-2 bg-[#FF497C] hover:bg-[#f3336a] rounded text-white font-semibold'
+              className='m-1 w-full mt-3 px-3 py-2 bg-[#fd2d68] hover:bg-[#f21f5b] rounded text-white font-semibold'
             >
               Cost
             </div>
@@ -100,7 +100,7 @@ const AllTouristSpot = () => {
                   </div>
                   <div>
                     <Link to={`/tourspot-detail/${spot._id}`}>
-                      <button className='w-full mt-3 px-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
+                      <button className='w-full mt-3 px-3 py-2 bg-[#ec3fee] hover:bg-[#af11c1] rounded text-white font-semibold'>
                         View Details
                       </button>
                     </Link>

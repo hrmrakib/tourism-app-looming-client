@@ -40,10 +40,10 @@ const Navbar = () => {
         <NavLink to='/allTouristSpot'>All Tourists Spot </NavLink>
       </li>
       <li>
-        <NavLink to='/add'>Add Tourists Spot</NavLink>
+        <NavLink to='/addTouristSpot'>Add Tourists Spot</NavLink>
       </li>
       <li>
-        <NavLink to='/my-list'>My List</NavLink>
+        <NavLink to='/myList'>My List</NavLink>
       </li>
     </>
   );

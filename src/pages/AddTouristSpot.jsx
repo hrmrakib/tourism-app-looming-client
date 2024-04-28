@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { baseURL } from "../utilities/url";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Contexts/AuthContextProvider";
 
 const AddTouristSpot = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
+  const { user } = useContext(AuthContext);
+  const getUserEmail = user.email;
+  const getUserName = user.displayName;
 
   const {
     register,
@@ -39,8 +43,8 @@ const AddTouristSpot = () => {
       spotName,
       totaVisitorsPerYear,
       travelTime,
-      userEmail,
-      userName,
+      // userEmail,
+      // userName,
     } = data;
 
     const spotInfo = {
@@ -53,8 +57,8 @@ const AddTouristSpot = () => {
       spotName,
       totaVisitorsPerYear,
       travelTime,
-      userEmail,
-      userName,
+      userEmail: getUserEmail,
+      userName: getUserName,
     };
 
     fetch(`${baseURL}/allspot`, {
@@ -259,8 +263,10 @@ const AddTouristSpot = () => {
                 </legend>
                 <input
                   type='email'
-                  {...register("userEmail", { required: true })}
-                  placeholder='User Email'
+                  defaultValue={getUserEmail}
+                  readOnly
+                  // {...register("userEmail", { required: true })}
+                  // placeholder='User Email'
                   className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
                 />
               </fieldset>
@@ -275,8 +281,10 @@ const AddTouristSpot = () => {
                 <legend className='font-medium text-black/60'>User Name</legend>
                 <input
                   type='text'
-                  {...register("userName", { required: true })}
-                  placeholder='User Name'
+                  defaultValue={getUserName}
+                  readOnly
+                  // {...register("userName", { required: true })}
+                  // placeholder='User Name'
                   className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
                 />
               </fieldset>
