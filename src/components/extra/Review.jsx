@@ -19,7 +19,7 @@ const img3 =
 
 const Review = () => {
   return (
-    <div className='py-24 bg-white dark:bg-gray-900 grid grid-cols-1 lg:grid-cols-2 gap-10'>
+    <div className='md:py-24 bg-white dark:bg-gray-900 grid grid-cols-1 lg:grid-cols-2 gap-10'>
       <div>
         <img className='h-52 md:h-96' src={img} alt='' />
       </div>

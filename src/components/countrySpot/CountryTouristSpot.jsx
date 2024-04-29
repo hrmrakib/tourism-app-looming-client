@@ -14,10 +14,10 @@ const CountryTouristSpot = () => {
   return (
     <div className=''>
       <div className='flex flex-col items-center justify-center mb-16'>
-        <h2 className='text-4xl font-bold mb-3 text-gray-950 dark:text-white'>
+        <h2 className='text-2xl md:text-4xl font-bold mb-3 text-gray-950 dark:text-white'>
           Trending destinations
         </h2>
-        <p className='text-gray-600 dark:text-gray-200 text-xl'>
+        <p className='text-gray-600 dark:text-gray-200 md:text-xl'>
           Most popular choices for travelers
         </p>
       </div>
@@ -39,7 +39,7 @@ const CountryTouristSpot = () => {
                   <img className='w-10 h-8' src={country.flagImage} alt='' />
                 </div>
                 <div className='absolute bottom-0 bg-[#00000037]'>
-                  <p className=' text-white text-lg p-4'>
+                  <p className=' text-white md:text-lg p-4'>
                     {country.description}
                   </p>
                 </div>

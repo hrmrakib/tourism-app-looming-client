@@ -30,8 +30,6 @@ const AddTouristSpot = () => {
     console.log("effect calling........");
   }, [watchMysel]);
 
-  // console.log("selectedCountry", selectedCountry);
-
   const handleAddSpot = (data) => {
     const {
       averageCost,
@@ -84,21 +82,23 @@ const AddTouristSpot = () => {
   };
 
   return (
-    <div className='bg-white'>
-      <div className='w-[88%] mx-auto py-16 bg-white'>
-        <h2 className='text-4xl font-bold text-center mb-9 text-gray-950'>
+    <div className='bg-white dark:bg-gray-900'>
+      <div className='w-[88%] mx-auto py-16 bg-white dark:bg-gray-900'>
+        <h2 className='text-4xl font-bold text-center mb-9 text-gray-900 dark:text-white'>
           Add a New Tourist Spot
         </h2>
         <form onSubmit={handleSubmit(handleAddSpot)}>
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10'>
-            <div className='shadow-sm'>
+            <div className='shadow-sm bg-white dark:bg-gray-900'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>PhotoURL</legend>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
+                  PhotoURL
+                </legend>
                 <input
                   type='text'
                   {...register("photoURL", { required: true })}
                   placeholder='Enter PhotoURL'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white rounded-md dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -109,14 +109,14 @@ const AddTouristSpot = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
                   Tourists Spot Name
                 </legend>
                 <input
                   type='text'
                   {...register("spotName", { required: true })}
                   placeholder='Tourists Spot Name'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white rounded-md dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -127,11 +127,13 @@ const AddTouristSpot = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
                   Country Name
                 </legend>
                 <select
-                  className={"w-full bg-white outline-none text-black"}
+                  className={
+                    "w-full bg-white dark:bg-gray-900 text-black dark:text-white outline-none"
+                  }
                   defaultValue='0'
                   {...register("country")}
                 >
@@ -152,12 +154,14 @@ const AddTouristSpot = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>Location</legend>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
+                  Location
+                </legend>
                 <input
                   type='text'
                   {...register("location", { required: true })}
                   placeholder='Enter location'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white rounded-md dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -168,14 +172,14 @@ const AddTouristSpot = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
                   Short Description
                 </legend>
                 <input
                   type='text'
                   {...register("description", { required: true })}
                   placeholder='Enter description'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white rounded-md dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -186,14 +190,14 @@ const AddTouristSpot = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
                   Average Cost
                 </legend>
                 <input
                   type='text'
                   {...register("averageCost", { required: true })}
                   placeholder='Enter cost'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white rounded-md dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -204,14 +208,14 @@ const AddTouristSpot = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
                   Seasonality
                 </legend>
                 <input
                   type='text'
                   {...register("seasonality", { required: true })}
                   placeholder='Seasonality  - Summer / Winter'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white rounded-md dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -222,14 +226,14 @@ const AddTouristSpot = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
                   Travel Time
                 </legend>
                 <input
                   type='text'
                   {...register("travelTime", { required: true })}
                   placeholder='Travel Time'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white rounded-md dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -240,14 +244,14 @@ const AddTouristSpot = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
                   Total Visitors Per Year
                 </legend>
                 <input
                   type='text'
                   {...register("totaVisitorsPerYear", { required: true })}
                   placeholder='Total Visitors Per Year'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white rounded-md dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -258,7 +262,7 @@ const AddTouristSpot = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
                   User Email
                 </legend>
                 <input
@@ -267,7 +271,7 @@ const AddTouristSpot = () => {
                   readOnly
                   // {...register("userEmail", { required: true })}
                   // placeholder='User Email'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white rounded-md dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -278,14 +282,16 @@ const AddTouristSpot = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>User Name</legend>
+                <legend className='font-medium text-black/60 dark:text-blue-400'>
+                  User Name
+                </legend>
                 <input
                   type='text'
                   defaultValue={getUserName}
                   readOnly
                   // {...register("userName", { required: true })}
                   // placeholder='User Name'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white rounded-md dark:bg-gray-900'
                 />
               </fieldset>
               <p>

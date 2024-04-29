@@ -1,3 +1,4 @@
+import TestCom from "../components/TestCom";
 import CountryTouristSpot from "../components/countrySpot/CountryTouristSpot";
 import ChooseUs from "../components/extra/ChooseUs";
 import Review from "../components/extra/Review";
@@ -9,6 +10,7 @@ const HomePage = () => {
     <div className='bg-white dark:bg-gray-900'>
       <HeroSlider />
       <div className='w-[80%] mx-auto'>
+        <TestCom />
         <TouristSpot />
         <CountryTouristSpot />
         <ChooseUs />

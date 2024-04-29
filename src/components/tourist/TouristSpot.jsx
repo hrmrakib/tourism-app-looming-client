@@ -23,7 +23,7 @@ const TouristSpot = () => {
         <button className='bg-gray-100 px-4 py-2 text-green-500 text-lg font-semibold rounded-md'>
           Popular Tourist Spot
         </button>
-        <h2 className='text-5xl text-gray-950 dark:text-white font-bold text-center max-w-2xl mt-7 leading-snug'>
+        <h2 className='text-2xl md:text-5xl leading-relaxed text-gray-950 dark:text-white font-bold text-center max-w-2xl mt-7'>
           Visit & enjoy adventure life with full of dreams
         </h2>
       </div>

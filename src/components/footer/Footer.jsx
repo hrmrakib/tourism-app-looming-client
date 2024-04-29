@@ -13,7 +13,7 @@ const Footer = () => {
                     Looming
                   </h2>
                 </Link>
-                <p className='max-w-md text-white my-5'>
+                <p className='max-w-md text-gray-800 dark:text-white my-5'>
                   To take trivial example which us ever undertakes laborious
                   physica exercise except obsome.
                 </p>

@@ -63,8 +63,8 @@ const MyListPage = () => {
   }
 
   return (
-    <div className='bg-white min-h-screen'>
-      <div className='w-[80%] mx-auto'>
+    <div className='bg-white dark:bg-gray-900 min-h-screen'>
+      <div className='md:w-[80%] mx-auto'>
         <div className='mb-12'>
           <div>
             <h2 className='text-center text-3xl text-gray-900 font-bold'>
@@ -77,7 +77,7 @@ const MyListPage = () => {
             <table className='table'>
               {/* head */}
               <thead>
-                <tr className='text-gray-900 font-semibold text-xl'>
+                <tr className='text-gray-900 dark:text-white font-semibold text-xl'>
                   <th>No</th>
                   <th>Name</th>
                   <th>Price</th>
@@ -89,7 +89,7 @@ const MyListPage = () => {
                 {/* row 1 */}
                 {listedSpot.map((spot, i) => (
                   <tr key={spot?._id}>
-                    <th className='text-green-400 font-semibold text-xl'>
+                    <th className='text-green-400 dark:text-blue-500 font-semibold text-xl'>
                       {i + 1}
                     </th>
                     <td>
@@ -100,19 +100,19 @@ const MyListPage = () => {
                           </div>
                         </div>
                         <div>
-                          <div className='font-bold text-black'>
+                          <div className='font-bold text-black  dark:text-gray-100'>
                             {spot?.spotName}
                           </div>
-                          <div className='text-sm text-gray-700'>
+                          <div className='text-sm text-gray-700  dark:text-gray-100'>
                             {spot?.location}, {spot?.country}
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td className='text-gray-800 font-semibold text-lg'>
+                    <td className='text-gray-800 dark:text-gray-100 font-semibold text-lg'>
                       ${spot?.averageCost}
                     </td>
-                    <td className='text-gray-800 font-semibold text-lg'>
+                    <td className='text-gray-800 dark:text-gray-100 font-semibold text-lg'>
                       {spot?.travelTime}
                     </td>
                     <th>

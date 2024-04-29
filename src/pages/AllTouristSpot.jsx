@@ -14,8 +14,10 @@ const MyComponent = () => {
   });
 
   return (
-    <div className='App'>
-      <span className='text-lg text-gray-900'>Enjoy your {text}!</span>
+    <div className=''>
+      <p className='text-lg text-black dark:text-white'>
+        Enjoy your <span className='text-blue-500 font-semibold'>{text}</span>!
+      </p>
     </div>
   );
 };
@@ -59,7 +61,7 @@ const AllTouristSpot = () => {
   }
 
   return (
-    <div className='bg-white py-20'>
+    <div className='bg-white dark:bg-gray-900 md:py-20 pb-20 '>
       <div className='w-[80%] mx-auto'>
         <div className='flex flex-col items-center justify-center'>
           <div>
