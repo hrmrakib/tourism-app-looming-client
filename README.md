@@ -6,3 +6,5 @@
 - Add Spot pages with a form that only can access logged-in user
 - My listed page has all data only logged-in users can access to see his/her added data
 - Add dark mode for all pages
+- Add two packages - React-simple-typewriter  and  React-tooltip
+
