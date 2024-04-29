@@ -12,6 +12,10 @@ const MyListPage = () => {
   const userEmail = user.email;
 
   useEffect(() => {
+    document.title = "Looming | My Listed Spot";
+  }, []);
+
+  useEffect(() => {
     fetch(`${baseURL}/allDataByEmail/${userEmail}`)
       .then((res) => res.json())
       .then((data) => {
@@ -100,7 +104,7 @@ const MyListPage = () => {
                           </div>
                         </div>
                         <div>
-                          <div className='font-bold text-black  dark:text-gray-100'>
+                          <div className='font-bold md:text-lg text-black dark:text-gray-100'>
                             {spot?.spotName}
                           </div>
                           <div className='text-sm text-gray-700  dark:text-gray-100'>

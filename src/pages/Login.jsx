@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthContextProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
   const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
@@ -22,11 +24,19 @@ const LoginPage = () => {
 
     setPasswordError("");
     setAuthError("");
-    if (password.lenght < 6) {
+    if (password.length < 6) {
       setPasswordError("Must be 6 characters");
+      return;
     }
     signIn(email, password)
       .then(() => {
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Login successfully!",
+          showConfirmButton: false,
+          timer: 1000,
+        });
         navigate(location.state ? location?.state : "/");
       })
       .catch((err) => {
@@ -58,6 +68,7 @@ const LoginPage = () => {
 
   return (
     <div className='w-full bg-white'>
+      <ToastContainer autoClose={1000} />
       <div className='w-[86%] mx-auto'>
         <div className='w-1/2  mx-auto border shadow-lg py-8 rounded-md'>
           <div>
@@ -166,6 +177,7 @@ const LoginPage = () => {
                         className='px-4 py-1 w-full focus:outline-0 bg-white text-black'
                       />
                     </fieldset>
+                    <p className='text-red-600'>{passwordError}</p>
                     <p>
                       {errors.password && (
                         <span className='text-red-600'>

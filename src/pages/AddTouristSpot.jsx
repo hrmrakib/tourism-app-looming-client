@@ -10,6 +10,10 @@ const AddTouristSpot = () => {
   const getUserEmail = user.email;
   const getUserName = user.displayName;
 
+  useEffect(() => {
+    document.title = "Looming | Add Tourist Spot";
+  }, []);
+
   const {
     register,
     handleSubmit,

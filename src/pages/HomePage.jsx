@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import CountryTouristSpot from "../components/countrySpot/CountryTouristSpot";
 import ChooseUs from "../components/extra/ChooseUs";
 import Review from "../components/extra/Review";
@@ -5,6 +6,10 @@ import HeroSlider from "../components/header/HeroSlider";
 import TouristSpot from "../components/tourist/TouristSpot";
 
 const HomePage = () => {
+  useEffect(() => {
+    document.title = "Looming | Home";
+  }, []);
+
   return (
     <div className='bg-white dark:bg-gray-900'>
       <HeroSlider />

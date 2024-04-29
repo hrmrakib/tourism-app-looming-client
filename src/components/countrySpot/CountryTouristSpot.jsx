@@ -14,6 +14,9 @@ const CountryTouristSpot = () => {
   return (
     <div className=''>
       <div className='flex flex-col items-center justify-center mb-16'>
+        <button className='bg-gray-100 px-4 py-2 text-green-500 text-lg font-semibold rounded-md mb-4'>
+          Countries Tourist
+        </button>
         <h2 className='text-2xl md:text-4xl font-bold mb-3 text-gray-950 dark:text-white'>
           Trending destinations
         </h2>

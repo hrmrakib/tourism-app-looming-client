@@ -13,6 +13,10 @@ const MyComponent = () => {
     loop: 0,
   });
 
+  useEffect(() => {
+    document.title = "Looming | All Tourist Spot";
+  }, []);
+
   return (
     <div className=''>
       <p className='text-lg text-black dark:text-white'>
@@ -80,10 +84,10 @@ const AllTouristSpot = () => {
               className='dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-max'
             >
               <li onClick={sortAscending}>
-                <a className='text-gray-200'>Lowest to heighest</a>
+                <a className='text-gray-900'>Lowest to heighest</a>
               </li>
               <li onClick={sortDescending}>
-                <a className='text-gray-200'>Heighest to lowest</a>
+                <a className='text-gray-900'>Heighest to lowest</a>
               </li>
             </ul>
           </div>
