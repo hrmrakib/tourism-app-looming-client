@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 const slider1 = "https://i.ibb.co/68K7k3L/slider1.jpg";
-const slider2 = "https://i.ibb.co/Sd0zc64/slider2.jpg";
+const slider2 = "https://i.ibb.co/BBCShvg/myleshiya.jpg";
 const slider3 = "https://i.ibb.co/vY6R9mb/slider3.jpg";
 
 // import required modules

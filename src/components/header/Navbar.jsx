@@ -66,7 +66,11 @@ const Navbar = () => {
       <div className='navbar'>
         <div className='navbar-start'>
           <div className='dropdown'>
-            <div tabIndex={0} role='button' className='btn btn-ghost lg:hidden'>
+            <div
+              tabIndex={0}
+              role='button'
+              className='btn btn-ghost lg:hidden text-gray-600 dark:text-white'
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 className='h-5 w-5'
@@ -84,7 +88,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-50 p-2 shadow text-gray-950  rounded-box w-52 *:text-lg'
+              className='bg-gray-800 dark:bg-black *:text-gray-100 dark:*:text-gray-100 menu menu-sm dropdown-content mt-3 z-50 p-2 shadow text-gray-950  rounded-box w-52 *:text-lg'
             >
               {navLinks}
             </ul>
@@ -92,13 +96,13 @@ const Navbar = () => {
 
           <Link
             to='/'
-            className='md:text-2xl font-bold text-gray-950 dark:text-white'
+            className='text-sm md:text-2xl font-bold text-gray-950 dark:text-white'
           >
             Looming
           </Link>
         </div>
         <div className='navbar-center hidden lg:flex'>
-          <ul className='menu menu-horizontal px-1 *:text-lg text-gray-950 dark:text-white'>
+          <ul className=' dark:bg-black menu menu-horizontal px-1 *:text-lg text-gray-950 dark:text-white'>
             {navLinks}
           </ul>
         </div>
