@@ -54,18 +54,20 @@ const RegisterPage = () => {
           });
 
           navigate(location.state ? location?.state : "/");
+
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Registration successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         })
         .catch((err) => {
           notify(err.message);
+          console.log(err);
           setAnyError(err.message);
         });
-      Swal.fire({
-        position: "top",
-        icon: "success",
-        title: "Registration successfully!",
-        showConfirmButton: false,
-        timer: 1500,
-      });
     }
   };
   const handleGoogleSignIn = () => {
@@ -188,7 +190,9 @@ const RegisterPage = () => {
                       />
                     </fieldset>
                     {errors.displayName && (
-                      <span className='text-red-600'>Name is required</span>
+                      <span className='text-red-600 dark:text-white'>
+                        Name is required
+                      </span>
                     )}
                   </div>
                   <div>
@@ -204,7 +208,9 @@ const RegisterPage = () => {
                       />
                     </fieldset>
                     {errors.email && (
-                      <span className='text-red-600'>Email is required</span>
+                      <span className='text-red-600 dark:text-white'>
+                        Email is required
+                      </span>
                     )}
                   </div>
                   <div>
@@ -221,7 +227,9 @@ const RegisterPage = () => {
                     </fieldset>
                     {passwordError}
                     {errors.password && (
-                      <span className='text-red-600'>Password is required</span>
+                      <span className='text-red-600 dark:text-white'>
+                        Password is required
+                      </span>
                     )}
                   </div>
                   <div>
@@ -237,10 +245,12 @@ const RegisterPage = () => {
                       />
                     </fieldset>
                     {errors.photoURL && (
-                      <span className='text-red-600'>PhotoURL is required</span>
+                      <span className='text-red-600 dark:text-white'>
+                        PhotoURL is required
+                      </span>
                     )}
                   </div>
-                  <p className='text-red-600'>{anyError}</p>
+                  <p className='text-red-600 dark:text-white'>{anyError}</p>
 
                   <button className='w-full mt-3 px-3 py-2 bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
                     Sign Up
