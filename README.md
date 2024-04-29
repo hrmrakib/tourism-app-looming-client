@@ -1,8 +1,8 @@
-# React + Vite
+# [Live Preview](https://tourism-app-looming.web.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Basic Features
+- Home has a Navbar, HeroSlider, 6 tourist spot data, a countries section, an extra 2 sections, and a common footer.
+- All tourist spot page has all data in-store in the database
+- Add Spot pages with a form that only can access logged-in user
+- My listed page has all data only logged-in users can access to see his/her added data
+- Add dark mode for all pages
