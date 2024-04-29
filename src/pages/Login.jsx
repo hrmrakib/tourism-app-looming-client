@@ -67,19 +67,19 @@ const LoginPage = () => {
   };
 
   return (
-    <div className='w-full bg-white'>
+    <div className='w-full bg-white dark:bg-gray-900'>
       <ToastContainer autoClose={1000} />
-      <div className='w-[86%] mx-auto'>
-        <div className='w-1/2  mx-auto border shadow-lg py-8 rounded-md'>
+      <div className='w-[86%] mx-auto '>
+        <div className='w-1/2 bg-white dark:bg-gray-900 mx-auto border shadow-lg py-8 rounded-md'>
           <div>
-            <div className='bg-white p-5 rounded-lg lg:rounded-l-none'>
-              <div className='p-5'>
+            <div className='bg-white m-5 rounded-lg lg:rounded-l-none'>
+              <div className='bg-white dark:bg-gray-900'>
                 <div className='pb-8'>
-                  <p className='text-3xl font-bold mb-2 text-gray-900'>
+                  <p className='text-3xl font-bold mb-2 text-gray-900 dark:text-white'>
                     Sign In to Looming.
                   </p>
 
-                  <p className='font-semibold text-black/60'>
+                  <p className='font-semibold text-black/60 dark:text-white'>
                     Enter your details below
                   </p>
                 </div>
@@ -89,7 +89,7 @@ const LoginPage = () => {
                     onClick={() => handleGoogleSignIn()}
                     className='w-full max-w-md font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline'
                   >
-                    <div className='bg-white p-2 rounded-full'>
+                    <div className='bg-white  p-2 rounded-full'>
                       <svg className='w-4' viewBox='0 0 533.5 544.3'>
                         <path
                           d='M533.5 278.4c0-18.5-1.5-37.1-4.7-55.3H272.1v104.8h147c-6.1 33.8-25.7 63.7-54.4 82.7v68h87.7c51.5-47.4 81.1-117.4 81.1-200.2z'
@@ -136,9 +136,9 @@ const LoginPage = () => {
 
                 <form
                   onSubmit={handleSubmit(handleLogin)}
-                  className='space-y-3 w-full '
+                  className='space-y-3 w-full bg-white dark:bg-gray-900'
                 >
-                  <p className='flex justify-end'>
+                  <p className='flex justify-end text-black dark:text-white'>
                     New to Looming? Please
                     <Link
                       to='/register'
@@ -149,14 +149,14 @@ const LoginPage = () => {
                   </p>
                   <div>
                     <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
-                      <legend className='font-medium text-black/60'>
+                      <legend className='font-medium text-black/60 dark:text-white'>
                         Email
                       </legend>
                       <input
                         type='email'
                         {...register("email", { required: true })}
                         placeholder='Enter password'
-                        className='px-4 py-1 w-full focus:outline-0 bg-white text-black'
+                        className='px-4 py-1 w-full focus:outline-0 bg-white dark:bg-gray-900 text-black dark:text-white'
                       />
                     </fieldset>
                     <p>
@@ -167,14 +167,14 @@ const LoginPage = () => {
                   </div>
                   <div>
                     <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
-                      <legend className=' font-medium text-black/60'>
+                      <legend className=' font-medium text-black/60 dark:text-white'>
                         Password
                       </legend>
                       <input
                         type='password'
                         {...register("password", { required: true })}
                         placeholder='password'
-                        className='px-4 py-1 w-full focus:outline-0 bg-white text-black'
+                        className='px-4 py-1 w-full focus:outline-0 bg-white dark:bg-gray-900 text-black dark:text-white'
                       />
                     </fieldset>
                     <p className='text-red-600'>{passwordError}</p>

@@ -93,20 +93,20 @@ const RegisterPage = () => {
   const notify = (text) => toast(text);
 
   return (
-    <div className='bg-white w-full'>
+    <div className='bg-white dark:bg-gray-900 w-full'>
       <div className='w-[86%] mx-auto'>
         <ToastContainer autoClose={3500} />
 
         <div className='w-1/2  mx-auto border shadow-lg py-8 rounded-md'>
           <div>
-            <div className='bg-white p-5 rounded-lg lg:rounded-l-none'>
+            <div className='bg-white dark:bg-gray-900 rounded-lg lg:rounded-l-none'>
               <div className='p-5'>
                 <div className='pb-8'>
-                  <p className='text-3xl font-bold mb-2 text-gray-950p'>
+                  <p className='text-3xl font-bold mb-2 text-gray-950 dark:text-white'>
                     I'm New Here in Looming.
                   </p>
 
-                  <p className='font-semibold text-black/60'>
+                  <p className='font-semibold text-black/60 dark:text-white'>
                     Enter your details below
                   </p>
                 </div>
@@ -165,7 +165,7 @@ const RegisterPage = () => {
                   onSubmit={handleSubmit(onSubmit)}
                   className='space-y-3 w-full '
                 >
-                  <p className='flex justify-end'>
+                  <p className='flex justify-end text-black dark:text-white'>
                     Already a User to Looming? Please
                     <Link
                       to='/login'
@@ -177,14 +177,14 @@ const RegisterPage = () => {
 
                   <div>
                     <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
-                      <legend className=' font-medium text-black/60'>
+                      <legend className=' font-medium text-black/60 dark:text-white'>
                         Name
                       </legend>
                       <input
                         type='text'
                         {...register("displayName", { required: true })}
                         placeholder='Your Name'
-                        className='px-4 py-1 w-full focus:outline-0 bg-white text-gray-950'
+                        className='px-4 py-1 w-full focus:outline-0 bg-white dark:bg-gray-900 text-gray-950 dark:text-white'
                       />
                     </fieldset>
                     {errors.displayName && (
@@ -193,14 +193,14 @@ const RegisterPage = () => {
                   </div>
                   <div>
                     <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
-                      <legend className='font-medium text-black/60'>
+                      <legend className='font-medium text-black/60 dark:text-white'>
                         Email
                       </legend>
                       <input
                         type='email'
                         {...register("email", { required: true })}
                         placeholder='Enter password'
-                        className='px-4 py-1 w-full focus:outline-0 bg-white text-gray-950'
+                        className='px-4 py-1 w-full focus:outline-0 bg-white dark:bg-gray-900 text-gray-950 dark:text-white'
                       />
                     </fieldset>
                     {errors.email && (
@@ -209,14 +209,14 @@ const RegisterPage = () => {
                   </div>
                   <div>
                     <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
-                      <legend className=' font-medium text-black/60'>
+                      <legend className=' font-medium text-black/60 dark:text-white'>
                         Password
                       </legend>
                       <input
                         type='password'
                         {...register("password", { required: true })}
                         placeholder='password'
-                        className='px-4 py-1 w-full focus:outline-0 bg-white text-gray-950'
+                        className='px-4 py-1 w-full focus:outline-0 bg-white dark:bg-gray-900 text-gray-950 dark:text-white'
                       />
                     </fieldset>
                     {passwordError}
@@ -226,14 +226,14 @@ const RegisterPage = () => {
                   </div>
                   <div>
                     <fieldset className='border border-solid border-gray-300 p-3 w-full rounded'>
-                      <legend className=' font-medium text-black/60'>
+                      <legend className=' font-medium text-black/60 dark:text-white'>
                         PhotoURL
                       </legend>
                       <input
                         type='text'
                         {...register("photoURL", { required: true })}
                         placeholder='Enter PhotoURL'
-                        className='px-4 py-1 w-full focus:outline-0 bg-white text-gray-950'
+                        className='px-4 py-1 w-full focus:outline-0 bg-white dark:bg-gray-900 text-gray-950 dark:text-white'
                       />
                     </fieldset>
                     {errors.photoURL && (
