@@ -58,7 +58,7 @@ const MyListPage = () => {
 
   if (loading) {
     return (
-      <div className='bg-white flex items-center justify-center h-screen w-full'>
+      <div className='bg-white dark:bg-gray-900 flex items-center justify-center h-screen w-full'>
         <div className='bg-gray-600 size-16 rounded-full flex items-center justify-center'>
           <span className='loading loading-spinner loading-lg text-center text-white'></span>
         </div>

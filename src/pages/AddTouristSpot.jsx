@@ -6,6 +6,7 @@ import { AuthContext } from "../Contexts/AuthContextProvider";
 
 const AddTouristSpot = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const { user } = useContext(AuthContext);
   const getUserEmail = user.email;
   const getUserName = user.displayName;
@@ -27,14 +28,13 @@ const AddTouristSpot = () => {
   useEffect(() => {
     setSelectedCountry("");
     const filtraPavimento = () => {
-      console.log("mysel value", watchMysel);
       setSelectedCountry(watchMysel);
     };
     filtraPavimento();
-    console.log("effect calling........");
   }, [watchMysel]);
 
   const handleAddSpot = (data) => {
+    setIsButtonDisabled(true);
     const {
       averageCost,
       country,
@@ -45,8 +45,6 @@ const AddTouristSpot = () => {
       spotName,
       totaVisitorsPerYear,
       travelTime,
-      // userEmail,
-      // userName,
     } = data;
 
     const spotInfo = {
@@ -81,6 +79,9 @@ const AddTouristSpot = () => {
             timer: 1500,
           });
           reset();
+          setTimeout(() => {
+            setIsButtonDisabled(false);
+          }, 3000);
         }
       });
   };
@@ -305,7 +306,10 @@ const AddTouristSpot = () => {
               </p>
             </div>
             <div>
-              <button className='w-full mt-3 px-3 py-5 text-lg bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'>
+              <button
+                disabled={isButtonDisabled}
+                className='w-full mt-3 px-3 py-5 text-lg bg-[#FF497C] hover:bg-[#ab3154] rounded text-white font-semibold'
+              >
                 Add New Spot
               </button>
             </div>

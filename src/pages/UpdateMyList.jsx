@@ -67,19 +67,21 @@ const UpdateMyList = () => {
   };
 
   return (
-    <div className='bg-white'>
+    <div className='bg-white dark:bg-gray-900'>
       <div className='w-[80%] mx-auto'>
         <form onSubmit={handleSubmit(handleUpdateSpot)}>
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10'>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>PhotoURL</legend>
+                <legend className='font-medium text-black/60 dark:text-blue-600'>
+                  PhotoURL
+                </legend>
                 <input
                   type='text'
                   defaultValue={loadedData.photoURL}
                   {...register("photoURL")}
                   placeholder='Enter PhotoURL'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -90,7 +92,7 @@ const UpdateMyList = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-600'>
                   Tourists Spot Name
                 </legend>
                 <input
@@ -98,7 +100,7 @@ const UpdateMyList = () => {
                   defaultValue={loadedData.spotName}
                   {...register("spotName")}
                   placeholder='Tourists Spot Name'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -109,11 +111,13 @@ const UpdateMyList = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-600'>
                   Country Name
                 </legend>
                 <select
-                  className={"w-full bg-white outline-none text-black"}
+                  className={
+                    "w-full bg-white dark:bg-gray-900 outline-none text-black dark:text-white"
+                  }
                   defaultValue={loadedData.country}
                   {...register("country")}
                 >
@@ -134,13 +138,15 @@ const UpdateMyList = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>Location</legend>
+                <legend className='font-medium text-black/60 dark:text-blue-600'>
+                  Location
+                </legend>
                 <input
                   type='text'
                   defaultValue={loadedData.location}
                   {...register("location")}
                   placeholder='Enter location'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -151,7 +157,7 @@ const UpdateMyList = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-600'>
                   Short Description
                 </legend>
                 <input
@@ -159,7 +165,7 @@ const UpdateMyList = () => {
                   defaultValue={loadedData.description}
                   {...register("description")}
                   placeholder='Enter description'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -170,7 +176,7 @@ const UpdateMyList = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-600'>
                   Average Cost
                 </legend>
                 <input
@@ -178,7 +184,7 @@ const UpdateMyList = () => {
                   defaultValue={loadedData.averageCost}
                   {...register("averageCost")}
                   placeholder='Enter cost'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -189,7 +195,7 @@ const UpdateMyList = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-600'>
                   Seasonality
                 </legend>
                 <input
@@ -197,7 +203,7 @@ const UpdateMyList = () => {
                   defaultValue={loadedData.seasonality}
                   {...register("seasonality")}
                   placeholder='Seasonality  - Summer / Winter'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -208,7 +214,7 @@ const UpdateMyList = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-600'>
                   Travel Time
                 </legend>
                 <input
@@ -216,7 +222,7 @@ const UpdateMyList = () => {
                   defaultValue={loadedData.travelTime}
                   {...register("travelTime")}
                   placeholder='Travel Time'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white dark:bg-gray-900'
                 />
               </fieldset>
               <p>
@@ -227,7 +233,7 @@ const UpdateMyList = () => {
             </div>
             <div className='shadow-sm'>
               <fieldset className='border border-solid border-gray-300 p-3 w-full rounded-lg'>
-                <legend className='font-medium text-black/60'>
+                <legend className='font-medium text-black/60 dark:text-blue-600'>
                   Total Visitors Per Year
                 </legend>
                 <input
@@ -235,7 +241,7 @@ const UpdateMyList = () => {
                   defaultValue={loadedData.totaVisitorsPerYear}
                   {...register("totaVisitorsPerYear")}
                   placeholder='Total Visitors Per Year'
-                  className='px-4 py-1 w-full focus:outline-0 text-black bg-white'
+                  className='px-4 py-1 w-full focus:outline-0 text-black dark:text-white bg-white dark:bg-gray-900'
                 />
               </fieldset>
               <p>

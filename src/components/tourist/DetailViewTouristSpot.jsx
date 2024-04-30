@@ -9,7 +9,7 @@ const DetailViewTouristSpot = () => {
   const loadedSpot = useLoaderData();
   console.log(loadedSpot);
   return (
-    <div className='bg-white'>
+    <div className='bg-white dark:bg-gray-900'>
       <div>
         <div className='w-[80%] mx-auto relative border'>
           <div className='absolute border w-full h-full flex items-center justify-center'>
@@ -28,55 +28,61 @@ const DetailViewTouristSpot = () => {
             alt=''
           />
         </div>
-        <div className='bg-[#F3F8F6] py-16'>
+        <div className='bg-[#F3F8F6] dark:bg-gray-900 py-16'>
           <div className='w-[80%] mx-auto md:flex justify-between'>
             <div>
-              <h2 className='text-3xl font-bold text-gray-900 mb-4'>
+              <h2 className='text-3xl font-bold text-gray-900 dark:text-white mb-4'>
                 {loadedSpot?.spotName}
               </h2>
-              <p className='flex items-center text-lg font-semibold text-gray-700 mb-2'>
-                <FaLocationDot className='text-xl text-gray-400' />{" "}
+              <p className='flex items-center text-lg font-semibold text-gray-700 dark:text-white mb-2'>
+                <FaLocationDot className='text-xl text-gray-400 dark:text-[#ee5ae2] mr-1' />{" "}
                 {loadedSpot?.location}, {loadedSpot?.country}
               </p>
-              <p className='text-gray-800 max-w-72'>
+              <p className='text-gray-800 dark:text-white max-w-72'>
                 {loadedSpot?.description}
               </p>
             </div>
             <div className='flex items-center gap-10'>
               <div className='flex items-center gap-3'>
-                <FcMoneyTransfer className='text-4xl' />
+                <FcMoneyTransfer className='text-4xl dark:text-[#ee5ae2]' />
                 <p className='flex flex-col'>
-                  <span className='text-base text-gray-800'>From</span>
-                  <span className='text-lg font-semibold text-gray-950'>
+                  <span className='text-base text-gray-800 dark:text-white'>
+                    From
+                  </span>
+                  <span className='text-lg font-semibold text-gray-950 dark:text-white'>
                     ${loadedSpot?.averageCost}
                   </span>
                 </p>
               </div>
               <div className='flex items-center gap-3'>
-                <TbCalendarClock className='text-4xl' />
+                <TbCalendarClock className='text-4xl dark:text-[#ee5ae2]' />
                 <p className='flex flex-col'>
-                  <span className='text-base text-gray-800'>Duration</span>
-                  <span className='text-lg font-semibold text-gray-950'>
-                    ${loadedSpot?.travelTime}
+                  <span className='text-base text-gray-800 dark:text-white'>
+                    Duration
+                  </span>
+                  <span className='text-lg font-semibold text-gray-950 dark:text-white'>
+                    {loadedSpot?.travelTime}
                   </span>
                 </p>
               </div>
               <div className='flex items-center gap-3'>
-                <TiWeatherPartlySunny className='text-4xl' />
+                <TiWeatherPartlySunny className='text-4xl dark:text-[#ee5ae2]' />
                 <p className='flex flex-col'>
-                  <span className='text-base text-gray-800'>Season</span>
-                  <span className='text-lg font-semibold text-gray-950'>
+                  <span className='text-base text-gray-800 dark:text-white'>
+                    Season
+                  </span>
+                  <span className='text-lg font-semibold text-gray-950 dark:text-white'>
                     {loadedSpot?.seasonality}
                   </span>
                 </p>
               </div>
               <div className='flex items-center gap-3'>
-                <FaPeopleGroup className='text-4xl' />
+                <FaPeopleGroup className='text-4xl dark:text-[#ee5ae2]' />
                 <p className='flex flex-col'>
-                  <span className='text-base text-gray-800'>
+                  <span className='text-base text-gray-800 dark:text-white'>
                     Visted Per Year
                   </span>
-                  <span className='text-lg font-semibold text-gray-950'>
+                  <span className='text-lg font-semibold text-gray-950 dark:text-white'>
                     {loadedSpot?.totaVisitorsPerYear}
                   </span>
                 </p>

@@ -30,12 +30,12 @@ const SpecificCountry = () => {
   }
 
   return (
-    <div className='bg-white'>
+    <div className='bg-white dark:bg-gray-900 min-h-screen'>
       <div className='w-[80%] mx-auto'>
         <div className='mb-12'>
           {countryData.slice(0, 1).map((c) => (
             <div key={c._id}>
-              <h2 className='text-center text-3xl text-gray-900 font-bold'>
+              <h2 className='text-center text-3xl text-gray-900 dark:text-white font-bold'>
                 All Tourist Spot in{" "}
                 <span className='text-blue-400'>{c.country}</span>
               </h2>
@@ -80,15 +80,19 @@ const SpecificCountry = () => {
                   <div className='flex items-center gap-3'>
                     <TiWeatherPartlySunny className='text-2xl' />
                     <p className='flex flex-col'>
-                      <span className='text-sm text-gray-800'>Season</span>
-                      <span className='font-semibold text-gray-950'>
+                      <span className='text-sm text-gray-800 dark:text-white'>
+                        Season
+                      </span>
+                      <span className='font-semibold text-gray-950 dark:text-white'>
                         {spot?.seasonality}
                       </span>
                     </p>
                   </div>
                 </div>
 
-                <p className='text-gray-700 min-h-14'>{spot.description}</p>
+                <p className='text-gray-700 dark:text-gray-200 min-h-14'>
+                  {spot.description}
+                </p>
 
                 <div className='flex justify-between items-center mt-4'>
                   <div>

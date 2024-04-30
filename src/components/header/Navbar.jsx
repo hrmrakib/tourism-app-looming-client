@@ -161,7 +161,11 @@ const Navbar = () => {
           )}
         </div>
 
-        <Tooltip anchorSelect='.my-anchor-element' place='bottom'>
+        <Tooltip
+          anchorSelect='.my-anchor-element'
+          id='my-tooltip'
+          place='right'
+        >
           {user && user.displayName}
         </Tooltip>
       </div>
