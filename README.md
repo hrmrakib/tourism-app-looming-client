@@ -10,3 +10,10 @@
 - Add dark mode for all pages
 - Add two packages - React-simple-typewriter  and  React-tooltip
 
+## Installation
+To install this project, follow these steps:
+1. git clone https://github.com/hrmrakib/tourism-app-looming-client.git
+2. npm install
+3. npm run dev
+
+#### [Go to Server Code of the Project ➜](https://github.com/hrmrakib/tourism-app-looming-server) 
