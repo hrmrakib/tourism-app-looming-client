@@ -1,7 +1,5 @@
 # [Live Preview](https://tourism-app-looming.web.app/)
 
-### Type-01 Requirements
-
 ## Basic Features
 - Home has a Navbar, HeroSlider, 6 tourist spot data, a countries section, an extra 2 sections, and a common footer.
 - All tourist spot page has all data in-store in the database
