@@ -7,7 +7,7 @@
 - My listed page has all data only logged-in users can access to see his/her added data
 - Add dark mode for all pages
 - Add two packages - React-simple-typewriter  and  React-tooltip
-
+ 
 ## Installation
 To install this project, follow these steps:
 1. git clone https://github.com/hrmrakib/tourism-app-looming-client.git
